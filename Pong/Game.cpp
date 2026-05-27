@@ -5,6 +5,8 @@ Game::Game() {
     this->initObjects();
     this->score1 = 0;
     this->score2 = 0;
+    
+    
 }
 
 Game::~Game() {
@@ -12,17 +14,20 @@ Game::~Game() {
     delete this->player1;
     delete this->player2;
     delete this->ball;
+    
 }
 
 void Game::initWindow() {
     this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "SFML Pong", sf::Style::Titlebar | sf::Style::Close);
     this->window->setFramerateLimit(60);
+	this->windowSize = window->getSize();
 }
 
 void Game::initObjects() {
     this->player1 = new Paddle(20.f, 250.f);            
     this->player2 = new Paddle(800.f - 40.f, 250.f);     
-    this->ball = new Ball(400.f, 300.f);                
+    this->ball = new Ball(400.f, 300.f);  
+    this->addPowerUp();
 }
 
 const bool Game::running() const { return this->window->isOpen(); }
@@ -80,6 +85,24 @@ void Game::render() {
     this->player1->render(this->window);
     this->player2->render(this->window);
     this->ball->render(this->window);
+    for(auto& powerUp : this->powerUps) {
+        powerUp.render(this->window);
+	}
 
     this->window->display();
 }
+
+sf::Vector2u Game::getSize() {
+    return this->window->getSize();
+}
+
+void Game::addPowerUp()
+{
+	int posX = rand() % (this->windowSize.x - 50) + 25;
+	int posY = rand() % (this->windowSize.y - 50) + 25;
+    PowerUp newPowerUp(sf::Vector2f(posX, posY), PUT_SIZE);
+    this->powerUps.push_back(newPowerUp);
+	
+
+}
+

@@ -2,6 +2,9 @@
 #include <SFML/Graphics.hpp>
 #include "Paddle.h"
 #include "Ball.h"
+#include <vector>
+#include "PowerUp.h"
+
 
 enum GameState {
     GS_MainMenu = 0,
@@ -24,6 +27,13 @@ private:
 
     void initWindow();
     void initObjects();
+	void addPowerUp();
+	void updatePowerUps();
+
+	std::vector<PowerUp> powerUps;
+
+	sf::Vector2u windowSize;
+
 
 public:
     Game();
@@ -34,4 +44,6 @@ public:
     void updateCollisions();
     void update();
     void render();
+	sf::RenderWindow* getWindow() const { return this->window; }
+    sf::Vector2u getSize();
 };
