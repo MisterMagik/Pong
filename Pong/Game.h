@@ -4,11 +4,12 @@
 #include "Ball.h"
 #include <vector>
 #include "PowerUp.h"
-#include "DataBaseManager.h"
-
+#include "DatabaseManager.h"
+#include "LoginScreen.h"
 
 enum GameState {
-    GS_MainMenu = 0,
+    GS_LoginScreen = 0,
+    GS_MainMenu,
     GS_Playing,
     GS_Pause,
     GS_GameOver
@@ -22,21 +23,22 @@ private:
     Paddle* player1;
     Paddle* player2;
     Ball* ball;
-    
-    DatabaseManager dbManager;
 
     int score1;
     int score2;
 
     void initWindow();
     void initObjects();
-	void addPowerUp();
-	void updatePowerUps();
+    void addPowerUp();
+    void updatePowerUps();
 
-	std::vector<PowerUp> powerUps;
+    std::vector<PowerUp> powerUps;
+    sf::Vector2u windowSize;
 
-	sf::Vector2u windowSize;
-
+    // Elementy bazy danych i stanu gry
+    GameState state;
+    DatabaseManager dbManager;
+    LoginScreen loginScreen;
 
 public:
     Game();
@@ -47,6 +49,6 @@ public:
     void updateCollisions();
     void update();
     void render();
-	sf::RenderWindow* getWindow() const { return this->window; }
+    sf::RenderWindow* getWindow() const { return this->window; }
     sf::Vector2u getSize();
 };

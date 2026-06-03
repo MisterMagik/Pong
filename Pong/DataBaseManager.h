@@ -18,5 +18,10 @@ public:
 
     bool connect(const std::string& host, const std::string& user, const std::string& password, const std::string& database);
     void saveScore(int player1Score, int player2Score);
+
+    
+    bool registerUser(const std::string& username, const std::string& password);
+    bool loginUser(const std::string& username, const std::string& password);
+
     void disconnect();
 };

@@ -131,6 +131,7 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="DataBaseManager.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="LoginScreen.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="PowerUp.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="DataBaseManager.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="LoginScreen.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="PowerUp.h" />
   </ItemGroup>
