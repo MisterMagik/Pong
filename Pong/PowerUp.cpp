@@ -11,6 +11,7 @@ PowerUp::PowerUp(sf::Vector2f position, int type)
 
 PowerUp::~PowerUp()
 {
+
 }
 
 void PowerUp::render(sf::RenderTarget* target)

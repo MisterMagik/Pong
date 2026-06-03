@@ -4,6 +4,7 @@
 #include "Ball.h"
 #include <vector>
 #include "PowerUp.h"
+#include "DataBaseManager.h"
 
 
 enum GameState {
@@ -21,6 +22,8 @@ private:
     Paddle* player1;
     Paddle* player2;
     Ball* ball;
+    
+    DatabaseManager dbManager;
 
     int score1;
     int score2;
